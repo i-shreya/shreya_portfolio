@@ -104,20 +104,53 @@ function App() {
       return undefined;
     }
 
-    let isCurrentEffect = true;
+    audio.volume = 0.72;
+    audio.muted = false;
+    audio.defaultMuted = false;
 
     if (isSongPlaying) {
-      audio.play().catch(() => {
-        if (isCurrentEffect) {
-          setIsSongPlaying(false);
-        }
+      const attemptSongStart = () => audio.play().catch(() => {
+        // Browsers may block unmuted autoplay until the first user gesture.
+        // Keep the UI in the intended default-on state and retry on interaction.
       });
+
+      attemptSongStart();
+      const retryTimer = window.setTimeout(attemptSongStart, 450);
+      const laterRetryTimer = window.setTimeout(attemptSongStart, 1200);
+
+      audio.addEventListener('canplay', attemptSongStart);
+      document.addEventListener('visibilitychange', attemptSongStart);
+
+      return () => {
+        window.clearTimeout(retryTimer);
+        window.clearTimeout(laterRetryTimer);
+        audio.removeEventListener('canplay', attemptSongStart);
+        document.removeEventListener('visibilitychange', attemptSongStart);
+      };
     } else {
       audio.pause();
     }
 
+    return undefined;
+  }, [isSongPlaying]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+
+    if (!audio || !isSongPlaying) {
+      return undefined;
+    }
+
+    const resumeSong = () => {
+      audio.play().catch(() => {});
+    };
+
+    window.addEventListener('pointerdown', resumeSong, { once: true });
+    window.addEventListener('keydown', resumeSong, { once: true });
+
     return () => {
-      isCurrentEffect = false;
+      window.removeEventListener('pointerdown', resumeSong);
+      window.removeEventListener('keydown', resumeSong);
     };
   }, [isSongPlaying]);
 
@@ -131,7 +164,7 @@ function App() {
   return (
     <div className="layout" ref={layoutRef} onPointerMove={handlePointerMove}>
       <style>{fontFaces}</style>
-      <audio ref={audioRef} src={songSrc} preload="auto" loop autoPlay />
+      <audio ref={audioRef} src={songSrc} preload="auto" loop autoPlay playsInline />
       <span className="cursor-orb" aria-hidden="true" />
       <div className="page1">
         <button
@@ -154,7 +187,7 @@ function App() {
         </button>
 
         <figure className="profile-card" aria-label="Profile photo">
-          <img src="/profile2.jpg" alt="Shreya Soni" />
+          <img src="/profile1.jpg" alt="Shreya Soni" />
         </figure>
 
         <div className="introduction">
@@ -264,7 +297,7 @@ function App() {
 
         <section className="work-section" id="work" aria-labelledby="work-heading">
           <h2 className="about-heading work-heading" id="work-heading">
-            <span>Work</span>
+            <span>Work!</span>
           </h2>
           <div className="work-copy">
             <article className="work-card">
@@ -335,7 +368,7 @@ function App() {
         </section>
 
         <section className="connect-section" id="connect" aria-labelledby="connect-heading">
-          <h2 className="connect-heading" id="connect-heading">connect?</h2>
+          <h2 className="connect-heading" id="connect-heading">~ connect?~</h2>
           <div className="connect-content">
             <nav className="social-list" aria-label="Social links">
               <a className="social-link" href="https://www.linkedin.com/in/shreya-soni-ss23/" target="_blank" rel="noreferrer">

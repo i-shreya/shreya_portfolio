@@ -268,7 +268,7 @@ body {
   position: absolute;
   left: clamp(150px, 22vw, 360px);
   top: 39%;
-  z-index: 2;
+  z-index: 4;
   width: clamp(190px, 22vw, 315px);
   aspect-ratio: 4 / 5;
   margin: 0;
@@ -284,10 +284,10 @@ body {
 }
 
 .profile-card:hover {
-  transform: translateY(-50%) scale(1.025);
+  transform: translateY(-50%) scale(1.08);
   box-shadow:
-    0 0 54px 16px rgba(255, 179, 92, 0.24),
-    0 0 120px 34px rgba(255, 128, 64, 0.18);
+    0 0 46px 12px rgba(255, 255, 255, 0.22),
+    0 0 92px 24px rgba(246, 255, 248, 0.14);
 }
 
 .profile-card img {
@@ -296,6 +296,11 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: inherit;
+  transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-card:hover img {
+  transform: scale(1.025);
 }
 
 .introduction {
@@ -839,11 +844,13 @@ body {
 }
 
 .work-section {
-  grid-template-columns: minmax(560px, 1fr) auto;
-  column-gap: clamp(56px, 8vw, 132px);
+  grid-template-columns: minmax(0, 690px) 1fr;
+  column-gap: clamp(16px, 2.4vw, 34px);
   align-items: center;
-  width: min(100%, 1160px);
+  justify-content: start;
+  width: min(100%, 900px);
   margin-top: clamp(104px, 15vh, 170px);
+  padding: 0;
 }
 
 .projects-section {
@@ -883,10 +890,12 @@ body {
   order: 2;
   align-self: center;
   justify-self: end;
+  margin-left: 0;
   color: #ff1fa9;
   font-family: "Apricots", cursive;
-  font-size: clamp(4.45rem, 7.6vw, 8.2rem);
+  font-size: clamp(2.8rem, 5vw, 5.15rem);
   text-transform: none;
+  transform: none;
   animation: work-white-glow 4.6s infinite;
   text-shadow:
     0 0 8px rgba(255, 255, 255, 0.78),
@@ -900,10 +909,10 @@ body {
 
 .projects-heading {
   align-self: center;
-  margin-bottom: clamp(32px, 5vw, 58px);
+  margin-bottom: clamp(22px, 3vw, 38px);
   color: #ff751f;
   font-family: "Rasputin", "Retropix", serif;
-  font-size: clamp(4.1rem, 6.8vw, 7.3rem);
+  font-size: clamp(2rem, 3.3vw, 3.55rem);
   text-align: center;
   animation: projects-soft-yellow-glow 4.6s infinite;
   text-shadow:
@@ -937,10 +946,10 @@ body {
 }
 
 .about-flowers:hover {
-  transform: scale(1.18);
+  transform: scale(1.42);
   filter:
-    drop-shadow(10px 12px 18px rgba(0, 0, 0, 0.34))
-    drop-shadow(0 0 18px rgba(255, 208, 43, 0.16));
+    drop-shadow(14px 18px 24px rgba(0, 0, 0, 0.38))
+    drop-shadow(0 0 28px rgba(255, 208, 43, 0.22));
 }
 
 .about-heading,
@@ -1130,10 +1139,23 @@ body {
   backdrop-filter: blur(14px) saturate(1.18);
   -webkit-backdrop-filter: blur(14px) saturate(1.18);
   transition:
-    background 1300ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 1100ms ease,
-    box-shadow 1300ms ease,
-    transform 760ms cubic-bezier(0.16, 1, 0.3, 1);
+    border-color 1450ms ease 80ms,
+    box-shadow 1650ms ease 80ms,
+    transform 880ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.34), transparent 26%),
+    radial-gradient(circle at 78% 84%, rgba(45, 67, 42, 0.24), transparent 38%),
+    linear-gradient(145deg, #a8c1a4 0%, #8daa8a 48%, #647f61 100%);
+  opacity: 0;
+  transition: opacity 1700ms cubic-bezier(0.16, 1, 0.3, 1) 90ms;
 }
 
 .project-card::after {
@@ -1170,6 +1192,11 @@ body {
   transform: translate(0, 0);
 }
 
+.project-card:hover::before,
+.project-card:focus-within::before {
+  opacity: 1;
+}
+
 .project-card-large {
   grid-column: 1 / 8;
   grid-row: 1 / 2;
@@ -1193,22 +1220,19 @@ body {
 .project-card:hover,
 .project-card:focus-within {
   transform: translateY(-4px);
-  background:
-    radial-gradient(circle at 22% 16%, rgba(255, 255, 255, 0.54), transparent 24%),
-    radial-gradient(circle at 78% 86%, rgba(82, 140, 92, 0.4), transparent 36%),
-    linear-gradient(135deg, #f0ffe8, #d9f4cd 44%, #a9d39c);
-  border-color: rgba(217, 244, 205, 0.9);
+  border-color: rgba(141, 170, 138, 0.92);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.58),
-    inset 0 -26px 48px rgba(55, 95, 52, 0.16),
-    0 24px 48px rgba(0, 0, 0, 0.32),
-    0 0 30px rgba(217, 244, 205, 0.22);
+    inset 0 1px 0 rgba(255, 255, 255, 0.42),
+    inset 0 -30px 56px rgba(38, 54, 36, 0.24),
+    0 26px 52px rgba(0, 0, 0, 0.34),
+    0 0 34px rgba(141, 170, 138, 0.24);
 }
 
 .project-card-front,
 .project-card-back {
   position: absolute;
   inset: clamp(16px, 2vw, 24px);
+  z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1536,67 +1560,215 @@ body {
   }
 }
 
-@media (max-width: 760px) {
+@media (min-width: 1280px) {
   .page1 {
-    grid-template-columns: 1fr;
-    height: auto;
-    min-height: 100vh;
-    background-image: url('/v1.gif');
-    background-size: cover;
-    background-position: center;
-  }
-
-  .introduction {
-    min-height: 50vh;
-    padding: 40px 24px;
+    min-height: 780px;
   }
 
   .profile-card {
-    left: 58%;
-    top: 4vh;
-    width: min(48vw, 204px);
-    border-radius: 22px;
-    transform: translateX(-50%);
+    left: clamp(220px, 23vw, 430px);
   }
 
   .intro-content {
-    width: 320px;
-    margin-top: min(56vw, 246px);
+    width: min(36vw, 520px);
+  }
+
+  .about-section,
+  .work-section,
+  .projects-section,
+  .connect-section {
+    width: min(100%, 1240px);
+  }
+
+  .projects-bento {
+    width: min(100%, 980px);
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1100px) {
+  .page1 {
+    min-height: 720px;
+    background-attachment: scroll;
+  }
+
+  .profile-card {
+    left: clamp(48px, 9vw, 96px);
+    top: 38%;
+    width: clamp(180px, 28vw, 280px);
+  }
+
+  .introduction {
+    justify-content: flex-end;
+    padding: 48px clamp(34px, 6vw, 76px) 48px clamp(300px, 37vw, 390px);
+  }
+
+  .intro-content {
+    width: min(100%, 420px);
+  }
+
+  .name {
+    width: 300px;
+    height: 148px;
+  }
+
+  .name-script {
+    font-size: 196px;
+  }
+
+  .name-pixel {
+    left: 146px;
+    font-size: 50px;
+  }
+
+  .role {
+    font-size: clamp(1.35rem, 3vw, 1.8rem);
+  }
+
+  .focusedon {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 10px;
+    min-height: 118px;
+    margin-top: 34px;
+    transform: none;
+  }
+
+  .focused-label,
+  .frontend,
+  .backend,
+  .data-science {
+    font-size: clamp(1.28rem, 2.9vw, 1.7rem);
+  }
+
+  .page2-nav {
+    width: min(92%, 680px);
+    min-width: 0;
+    font-size: clamp(1.6rem, 4.4vw, 3rem);
+  }
+
+  .about-section,
+  .work-section,
+  .connect-section {
+    grid-template-columns: minmax(220px, 32%) minmax(0, 1fr);
+    width: min(100%, 940px);
+    column-gap: clamp(28px, 5vw, 58px);
+    padding-inline: clamp(28px, 4vw, 48px);
+  }
+
+  .work-section {
+    grid-template-columns: minmax(0, 1fr) minmax(180px, 28%);
+  }
+
+  .about-heading {
+    font-size: clamp(3.5rem, 8vw, 5.7rem);
+  }
+
+  .work-heading {
+    font-size: clamp(2.55rem, 6vw, 4rem);
+  }
+
+  .projects-heading {
+    font-size: clamp(1.85rem, 4.3vw, 2.9rem);
+  }
+
+  .projects-bento {
+    grid-template-rows: 230px 170px;
+    width: min(100%, 820px);
+  }
+
+  .connect-content {
+    grid-template-columns: minmax(0, max-content) minmax(150px, 230px);
+  }
+}
+
+@media (max-width: 760px) {
+  .layout::after,
+  .cursor-orb {
+    display: none;
+  }
+
+  .page1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    min-height: 100svh;
+    overflow: visible;
+    background-image: url('/v1.gif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+  }
+
+  .page1::after {
+    height: 22vh;
+  }
+
+  .introduction {
+    order: 2;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
+    height: auto;
+    padding: 12px 20px 104px;
+  }
+
+  .profile-card {
+    position: relative;
+    order: 1;
+    left: auto;
+    top: auto;
+    width: clamp(142px, 42vw, 198px);
+    margin-top: clamp(24px, 7vh, 48px);
+    border-radius: 18px;
+    transform: none;
+  }
+
+  .profile-card:hover {
+    transform: scale(1.065);
+  }
+
+  .intro-content {
+    width: min(100%, 320px);
+    margin-top: 0;
     transform: translateY(0);
   }
 
   .name {
-    width: 280px;
-    height: 136px;
+    width: min(100%, 260px);
+    height: 120px;
   }
 
   .name-script {
-    top: -26px;
-    left: -24px;
-    font-size: 178px;
+    top: -21px;
+    left: -12px;
+    font-size: 158px;
   }
 
   .name-pixel {
-    top: 36px;
-    left: 132px;
-    font-size: 46px;
+    top: 32px;
+    left: 118px;
+    font-size: 40px;
   }
 
   .role {
     gap: 5px;
-    font-size: 18px;
+    max-width: 100%;
+    flex-wrap: wrap;
+    font-size: clamp(0.96rem, 5vw, 1.16rem);
   }
 
   .focusedon {
-    grid-template-columns: auto 190px;
-    column-gap: 24px;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 8px;
     transform: translateX(0);
-    margin-top: 34px;
-    min-height: 118px;
+    margin-top: 22px;
+    min-height: 104px;
   }
 
   .role-loop {
-    width: 190px;
+    width: min(100%, 190px);
     height: 28px;
   }
 
@@ -1619,7 +1791,7 @@ body {
   .frontend,
   .backend,
   .data-science {
-    font-size: 22px;
+    font-size: clamp(1.08rem, 5.6vw, 1.36rem);
   }
 
   .gif {
@@ -1628,15 +1800,32 @@ body {
   }
 
   .tray-image {
-    width: 88px;
+    position: fixed;
+    width: 76px;
+  }
+
+  .tray-image:hover,
+  .tray-image:focus-visible {
+    transform: scale(1.18);
   }
 
   .page2-nav {
-    width: min(88%, 420px);
+    position: relative;
+    left: auto;
+    top: auto;
+    width: min(100% - 28px, 420px);
     min-width: 0;
-    font-size: clamp(1.45rem, 8vw, 2.4rem);
+    gap: 8px;
+    margin: 0 auto clamp(20px, 7vw, 36px);
+    padding-top: clamp(24px, 8vw, 42px);
+    font-size: clamp(1.16rem, 6.3vw, 1.9rem);
     flex-wrap: wrap;
     white-space: normal;
+    transform: none;
+  }
+
+  .nav-separator {
+    opacity: 0.45;
   }
 
   .about-section,
@@ -1645,19 +1834,36 @@ body {
   .connect-section {
     grid-template-columns: 1fr;
     row-gap: 32px;
+    width: 100%;
     min-height: auto;
-    margin-top: 42px;
+    margin-top: 34px;
+    padding-inline: clamp(18px, 5vw, 28px);
     scroll-margin-top: 52px;
   }
 
+  .about-section {
+    grid-template-columns: max-content auto;
+    grid-template-areas:
+      "heading flowers"
+      "copy copy";
+    column-gap: clamp(10px, 4vw, 18px);
+    align-items: center;
+    justify-content: center;
+  }
+
   .work-section {
+    grid-template-columns: minmax(0, 64%) auto;
+    grid-template-areas: "card heading";
+    column-gap: clamp(6px, 2.6vw, 12px);
+    align-items: center;
+    justify-content: center;
     min-height: auto;
-    margin-top: 78px;
+    margin-top: 66px;
   }
 
   .projects-section {
     min-height: auto;
-    margin-top: 78px;
+    margin-top: 66px;
   }
 
   .connect-section {
@@ -1666,17 +1872,43 @@ body {
   }
 
   .connect-heading {
-    font-size: clamp(4.6rem, 22vw, 7.2rem);
-    text-align: left;
+    font-size: clamp(3.8rem, 19vw, 6rem);
+    text-align: center;
   }
 
   .connect-content {
-    grid-template-columns: 1fr;
-    row-gap: 28px;
+    grid-template-columns: minmax(0, 1fr) minmax(104px, 34vw);
+    column-gap: clamp(14px, 5vw, 26px);
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .social-list {
+    gap: clamp(10px, 3.6vw, 16px);
   }
 
   .social-link {
     font-size: clamp(0.78rem, 4.2vw, 1.05rem);
+  }
+
+  .social-link:nth-child(1) {
+    order: 1;
+  }
+
+  .social-link:nth-child(2) {
+    order: 3;
+  }
+
+  .social-link:nth-child(3) {
+    order: 2;
+  }
+
+  .social-link:nth-child(4) {
+    order: 4;
+  }
+
+  .social-link:nth-child(5) {
+    order: 5;
   }
 
   .social-link img {
@@ -1685,12 +1917,14 @@ body {
 
   .connect-phone {
     justify-self: end;
-    width: min(70vw, 260px);
+    width: min(34vw, 150px);
     max-height: none;
   }
 
   .about-heading {
-    font-size: clamp(3.2rem, 14.2vw, 4.8rem);
+    grid-area: heading;
+    font-size: clamp(2.75rem, 12.4vw, 4.1rem);
+    justify-self: end;
   }
 
   .about-heading span + span {
@@ -1698,36 +1932,72 @@ body {
   }
 
   .about-copy {
-    font-size: clamp(0.94rem, 4.5vw, 1.22rem);
-    text-align: center;
+    grid-area: copy;
+    font-size: clamp(0.92rem, 4.2vw, 1.12rem);
+    text-align: left;
   }
 
   .about-flowers {
-    left: 10px;
-    width: clamp(92px, 28vw, 138px);
+    position: relative;
+    grid-area: flowers;
+    left: auto;
+    bottom: auto;
+    justify-self: start;
+    width: clamp(66px, 20vw, 104px);
+    transform-origin: center;
   }
 
   .work-copy {
+    grid-area: card;
     font-size: clamp(1rem, 5.4vw, 1.42rem);
     text-align: center;
   }
 
   .work-card {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     text-align: left;
-    min-height: 104px;
+    min-height: 78px;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .work-logo {
+    width: clamp(32px, 9vw, 42px);
+    border-radius: 8px;
+  }
+
+  .work-card-copy h3 {
+    gap: 6px;
+    font-size: clamp(0.68rem, 3.2vw, 0.86rem);
+  }
+
+  .work-card-copy h3 span {
+    font-size: clamp(0.52rem, 2.6vw, 0.68rem);
+  }
+
+  .work-card-copy p {
+    margin-top: 5px;
+    font-size: clamp(0.58rem, 2.8vw, 0.74rem);
   }
 
   .work-heading {
-    font-size: clamp(3.65rem, 17vw, 5.4rem);
+    grid-area: heading;
+    order: 2;
+    justify-self: start;
+    margin-left: 0;
+    font-size: clamp(2.2rem, 10vw, 3.15rem);
+    transform: translateX(-64px);
   }
 
   .projects-heading {
-    font-size: clamp(3.1rem, 13.8vw, 4.55rem);
+    font-size: clamp(1.6rem, 7.2vw, 2.25rem);
   }
 
   .work-card-arrow {
     display: inline-flex;
+    font-size: 1rem;
   }
 
   .projects-bento {
@@ -1741,7 +2011,7 @@ body {
   .project-card-wide {
     grid-column: auto;
     grid-row: auto;
-    min-height: 172px;
+    min-height: 190px;
   }
 
   .project-card:nth-child(3),
@@ -1759,12 +2029,12 @@ body {
   }
 
   .project-card h3 {
-    font-size: clamp(1rem, 5.6vw, 1.42rem);
+    font-size: clamp(0.98rem, 5vw, 1.28rem);
   }
 
   .project-card-front p,
   .project-card-back {
-    font-size: clamp(0.78rem, 3.8vw, 0.96rem);
+    font-size: clamp(0.74rem, 3.35vw, 0.9rem);
   }
 
   .sticker {
@@ -1861,4 +2131,52 @@ body {
     transform: translate(16px, -28px) scale(0.68) rotate(8deg);
   }
 
+}
+
+@media (max-width: 430px) {
+  .name {
+    transform: scale(0.9);
+  }
+
+  .name:hover,
+  .name:focus-within {
+    transform: scale(0.96);
+  }
+
+  .role {
+    flex-wrap: wrap;
+    max-width: 260px;
+  }
+
+  .focusedon {
+    margin-top: 20px;
+  }
+
+  .work-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .work-card-arrow {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .project-card,
+  .project-card-large,
+  .project-card-wide {
+    min-height: 220px;
+  }
+
+  .project-card-front,
+  .project-card-back {
+    inset: 14px;
+  }
+
+  .connect-heading {
+    font-size: clamp(3.8rem, 20vw, 5.4rem);
+  }
+
+  .social-link span {
+    overflow-wrap: anywhere;
+  }
 }
