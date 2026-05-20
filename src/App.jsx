@@ -305,9 +305,9 @@ function App() {
               <div className="work-card-copy">
                 <h3>
                   Addverb Technologies
-                  <span>Sep/25 - Present</span>
+                  <span>Jan/26 - Present</span>
                 </h3>
-                <p>Solution Software Engineer</p>
+                <p>Solution Software Engineer Intern</p>
               </div>
               <a className="work-card-arrow" href="https://addverb.com/" target="_blank" rel="noreferrer" aria-label="Open Addverb Technologies website">
                 &#8599;
@@ -332,6 +332,7 @@ function App() {
                 <span><strong>Fine-Tuning</strong>Integrated model fine-tuning and MCP server tooling for automated BOM generation, achieving 90% efficiency gains.</span>
               </div>
             </a>
+            {/*
             <button className="project-card project-card-wide" type="button" onClick={() => window.alert('no link for this project')}>
               <div className="project-card-front">
                 <h3>High-Speed WES Routing System</h3>
@@ -343,6 +344,7 @@ function App() {
                 <span><strong>Load Balancing + Scheduling</strong>Implemented round-robin CPU load balancing and high-throughput event processing.</span>
               </div>
             </button>
+            */}
             <a className="project-card" href="https://github.com/i-shreya/KoinX-Crypto-Tracker" target="_blank" rel="noreferrer">
               <div className="project-card-front">
                 <h3>Crypto-Tracker</h3>
