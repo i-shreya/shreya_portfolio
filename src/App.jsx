@@ -208,9 +208,9 @@ function App() {
             <div className="focusedon">
               <span className="focused-label">focused roles :</span>
               <span className="role-loop" aria-live="polite">
-                <button className="animated-role frontend" type="button">Frontend</button>
-                <button className="animated-role backend" type="button">Backend</button>
-                <button className="animated-role data-science" type="button">Data Science</button>
+                <button className="animated-role frontend" type="button">AI Engineer</button>
+                <button className="animated-role backend" type="button">Backend Engineer</button>
+                <button className="animated-role sde" type="button">SDE</button>
               </span>
             </div>
           </div>
@@ -290,7 +290,7 @@ function App() {
                   </React.Fragment>
                 ))}
               </span>
-              . I love absorbing art in all forms, from music and design to cinema, which probably explains why I have a soft spot for the iconic chaos of Dabangg.
+              . I love absorbing art in all forms, from music and design to cinema, which probably explains why I have Dabangg in my Letterboxd top 10.
             </p>
           </div>
         </section>
@@ -307,7 +307,16 @@ function App() {
                   Addverb Technologies
                   <span>Jan/26 - Present</span>
                 </h3>
-                <p>Solution Software Engineer Intern</p>
+                <ul className="work-role-list">
+                  <li>
+                    <span>Software Development Engineer</span>
+                    <span>April 26 - Present</span>
+                  </li>
+                  <li>
+                    <span>Solution Software Engineer Intern</span>
+                    <span>Jan 26 - April 26</span>
+                  </li>
+                </ul>
               </div>
               <a className="work-card-arrow" href="https://addverb.com/" target="_blank" rel="noreferrer" aria-label="Open Addverb Technologies website">
                 &#8599;
@@ -321,49 +330,77 @@ function App() {
             <span>PROJECTS</span>
           </h2>
           <div className="projects-bento">
-            <a className="project-card project-card-large" href="http://10.0.1.217:3000/" target="_blank" rel="noreferrer">
+            <button className="project-card project-card-large" type="button" onClick={() => window.alert('no link for this project')}>
               <div className="project-card-front">
-                <h3>Addverb AI Assistant- AskSyra</h3>
-                <p>Tech Stack: Agent Orchestration, ChromaDB, FastAPI, LangChain, LLMs, Python, RAG, React.js, Vector Database</p>
+                <span className="project-card-meta">Real contributed work - used by 100+ Addverb employees worldwide</span>
+                <h3>Bumblebee</h3>
+                <p>Tech Stack: C++23, Coqui TTS, Docker Compose, GGML CUDA, Milvus, MinIO, PostgreSQL, Redis, vLLM</p>
               </div>
               <div className="project-card-back">
-                <span><strong>LLM + RAG Architecture</strong>Engineered a local LLM pipeline leveraging RAG, dense embeddings, and vector similarity search over 200+ documents for low-latency, context-aware retrieval.</span>
-                <span><strong>RFQ Pipeline</strong>Architected structured prompt pipelines with dynamic model routing for parsing and summarizing 900-1000 page RFQs.</span>
-                <span><strong>Fine-Tuning</strong>Integrated model fine-tuning and MCP server tooling for automated BOM generation, achieving 90% efficiency gains.</span>
-              </div>
-            </a>
-            {
-            <button className="project-card project-card-wide" type="button" onClick={() => window.alert('no link for this project')}>
-              <div className="project-card-front">
-                <h3>High-Speed WES Routing System</h3>
-                <p>Tech Stack: Async Processing, Distributed Systems, Java, LLD, RabbitMQ, Redis, Spring Boot</p>
-              </div>
-              <div className="project-card-back">
-                <span><strong>Real-Time Routing Engine</strong>Engineered a low-latency WES pipeline capable of processing 6+ lakh TCP-based robotic feedback events every 200ms.</span>
-                <span><strong>Distributed System Design</strong>Architected asynchronous Java microservices using Redis caching and RabbitMQ queues for deterministic conveyor decisions within 200-300ms sensor windows.</span>
-                <span><strong>Load Balancing + Scheduling</strong>Implemented round-robin CPU load balancing and high-throughput event processing.</span>
+                <span><strong>AI Assistant Platform</strong>Built an After Sales assistant for 100+ active users on self-hosted GPU infrastructure, combining document search, voice interaction, and tool-calling workflows.</span>
+                <span><strong>Document Intelligence</strong>Indexed 10,000+ documents with Qwen3-Embedding-4B, Milvus, BM25, and Qwen3-Reranker-0.6B to support 20,000+ queries with 70%+ retrieval satisfaction.</span>
+                <span><strong>Voice Layer</strong>Built a low-latency C++23 WebSocket STT engine around parakeet.cpp with GGML CUDA acceleration, reaching 193ms latency, paired with Coqui TTS.</span>
+                <span><strong>Tool Runtime</strong>Designed ToolLoopAgent with gpt-oss-20b AWQ on vLLM and Vercel AI SDK to render validated React widgets, data tables, and Recharts.</span>
+                <span><strong>Secure SQL + Scale</strong>Added read-only SQL execution with role gating, pooling, and multi-database support; reduced GPU VRAM use by 40%+ with model registry, OpenTelemetry, Prometheus, and Grafana.</span>
               </div>
             </button>
-            }
-            <a className="project-card" href="https://github.com/i-shreya/KoinX-Crypto-Tracker" target="_blank" rel="noreferrer">
+            <button className="project-card project-card-wide" type="button" onClick={() => window.alert('no link for this project')}>
               <div className="project-card-front">
-                <h3>Crypto-Tracker</h3>
-                <p>Tech Stack: Microservices, MongoDB, NATS, Node.js</p>
+                <span className="project-card-meta">Real contributed work - used by 50+ solution engineers</span>
+                <h3>AEGIS</h3>
+                <p>Tech Stack: Async Inference, BricsCAD Automation, FFmpeg, RAG, Whisper ASR, XTTS-v2</p>
               </div>
               <div className="project-card-back">
-                <span><strong>Distributed Architecture + Microservices</strong>Built a crypto-tracking platform using Node.js, MongoDB, and NATS with Pub/Sub-based inter-service communication and Worker services.</span>
-                <span><strong>Backend Data Management</strong>Implemented MongoDB ingestion, storage, and retrieval pipelines for reliable historical cryptocurrency tracking.</span>
+                <span><strong>Engineering Automation</strong>Built AEGIS independently for Addverb's Solution Engineering team to automate BricsCAD workflows through RAG, async inference, and event-driven orchestration.</span>
+                <span><strong>RFQ Understanding</strong>Indexed and extracted requirements from 3,000+ page RFQs with 96% accuracy, reducing engineering prep time from 2 days to 15 minutes.</span>
+                <span><strong>Meeting Intelligence</strong>Used FFmpeg, Whisper ASR, and XTTS-v2 to process calls and produce structured minutes with action items, vendor budgets, and decisions.</span>
+                <span><strong>Workflow Expansion</strong>Added inbox monitoring for customer enquiries plus natural language to SQL for spreadsheet and database querying; now being integrated into Bumblebee.</span>
               </div>
-            </a>
+            </button>
+            <button className="project-card" type="button" onClick={() => window.alert('no link for this project')}>
+              <div className="project-card-front">
+                <span className="project-card-meta">Real contributed work - used by 500+ after sales employees worldwide</span>
+                <h3>AFS Portal</h3>
+                <p>Tech Stack: Mendix</p>
+              </div>
+              <div className="project-card-back">
+                <span><strong>Mendix Platform</strong>Built entirely on Mendix for the After Sales team, supporting 500+ employees across Addverb offices worldwide.</span>
+                <span><strong>Enterprise Access</strong>Implemented clean authentication, role-based access, and controlled user journeys for internal operational workflows.</span>
+                <span><strong>Operational UX</strong>Designed a polished, maintainable portal experience with structured forms, status tracking, and team-ready data visibility.</span>
+              </div>
+            </button>
             <a className="project-card" href="https://backyard-farming-2-0.vercel.app/" target="_blank" rel="noreferrer">
               <div className="project-card-front">
-                <h3>Backyard Farming2.0</h3>
+                <span className="project-card-meta">Self projects</span>
+                <h3>Backyard Farming 2.0</h3>
                 <p>Tech Stack: Clerk, Docker, Flask, Groq, MERN Stack, Python, Redux, TypeScript, Vite</p>
               </div>
               <div className="project-card-back">
                 <span><strong>FrontEnd</strong>Built reusable and scalable UI components using React and TailwindCSS, reducing frontend code redundancy by 40%.</span>
                 <span><strong>BackEnd & API Development</strong>Designed a secure backend with Node.js and Express.js, implementing JWT authentication and RESTful APIs.</span>
                 <span><strong>AI Integration</strong>Added an AI-powered crop recommendation engine and chatbot, improving suggestion accuracy by 35%.</span>
+              </div>
+            </a>
+            <a className="project-card" href="https://github.com/i-shreya/PaymentSimulator" target="_blank" rel="noreferrer">
+              <div className="project-card-front">
+                <span className="project-card-meta">Self projects</span>
+                <h3>Payment Simulator</h3>
+                <p>Tech Stack: Java + Spring Boot, PostgreSQL + Flyway, Security + JWT, Testing, Docker / DevOps</p>
+              </div>
+              <div className="project-card-back">
+                <span><strong>Payment Flow Simulation</strong>Built a simulator for testing transaction states, validation paths, and response handling.</span>
+                <span><strong>Developer Tooling</strong>Designed predictable mock flows to make payment integrations easier to test and debug.</span>
+              </div>
+            </a>
+            <a className="project-card" href="https://github.com/i-shreya/KoinX-Crypto-Tracker" target="_blank" rel="noreferrer">
+              <div className="project-card-front">
+                <span className="project-card-meta">Self projects</span>
+                <h3>Crypto-Tracker</h3>
+                <p>Tech Stack: Microservices, MongoDB, NATS, Node.js</p>
+              </div>
+              <div className="project-card-back">
+                <span><strong>Distributed Architecture + Microservices</strong>Built a crypto-tracking platform using Node.js, MongoDB, and NATS with Pub/Sub-based inter-service communication and Worker services.</span>
+                <span><strong>Backend Data Management</strong>Implemented MongoDB ingestion, storage, and retrieval pipelines for reliable historical cryptocurrency tracking.</span>
               </div>
             </a>
           </div>

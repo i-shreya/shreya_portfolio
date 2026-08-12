@@ -267,9 +267,9 @@ body {
 .profile-card {
   position: absolute;
   left: clamp(150px, 22vw, 360px);
-  top: 39%;
+  top: 43%;
   z-index: 4;
-  width: clamp(190px, 22vw, 315px);
+  width: clamp(210px, 23.5vw, 340px);
   aspect-ratio: 4 / 5;
   margin: 0;
   overflow: hidden;
@@ -284,7 +284,7 @@ body {
 }
 
 .profile-card:hover {
-  transform: translateY(-50%) scale(1.08);
+  transform: translateY(-50%) scale(1.1);
   box-shadow:
     0 0 46px 12px rgba(255, 255, 255, 0.22),
     0 0 92px 24px rgba(246, 255, 248, 0.14);
@@ -325,8 +325,8 @@ body {
 
 .name {
   position: relative;
-  width: 320px;
-  height: 160px;
+  width: 350px;
+  height: 170px;
   margin: 0;
   color: #f6fff8;
   transform-origin: center;
@@ -344,7 +344,7 @@ body {
   left: -34px;
   z-index: 2;
   font-family: "Edwardian", cursive;
-  font-size: 210px;
+  font-size: 215px;
   font-weight: bolder;
   line-height: 0.8;
   color: #f6fff8;
@@ -360,12 +360,12 @@ body {
 .name-pixel {
   position: absolute;
   top: 42px;
-  left: 156px;
+  left: 160px;
   z-index: 1;
   display: flex;
   flex-direction: column;
   font-family: "Retropix", monospace;
-  font-size: 55px;
+  font-size: 60px;
   font-weight: 400;
   line-height: 0.86;
   color: #f6fff8;
@@ -388,7 +388,7 @@ body {
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  font-size: 32px;
+  font-size: 37px;
   font-weight: 900;
   line-height: 1;
   letter-spacing: 0;
@@ -437,13 +437,13 @@ body {
 
 .focusedon {
   display: grid;
-  grid-template-columns: auto 270px;
+  grid-template-columns: auto 340px;
   row-gap: 0;
   column-gap: 34px;
   align-items: start;
   justify-content: center;
   align-self: center;
-  min-height: 166px;
+  min-height: 181px;
   transform: translateX(46px);
   margin-top: 44px;
 }
@@ -453,7 +453,7 @@ body {
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
-  font-size: 23px;
+  font-size: 28px;
   line-height: 1.1;
   white-space: nowrap;
   text-shadow:
@@ -465,8 +465,8 @@ body {
 .role-loop {
   position: relative;
   display: block;
-  width: 270px;
-  height: 42px;
+  width: 340px;
+  height: 47px;
   transition: height 240ms ease;
 }
 
@@ -496,7 +496,7 @@ body {
 
 .role-loop:hover,
 .role-loop:focus-within {
-  height: 166px;
+  height: 181px;
 }
 
 .role-loop:hover .animated-role,
@@ -515,13 +515,13 @@ body {
 
 .role-loop:hover .backend,
 .role-loop:focus-within .backend {
-  --role-y: 62px;
+  --role-y: 67px;
   animation-delay: 270ms;
 }
 
-.role-loop:hover .data-science,
-.role-loop:focus-within .data-science {
-  --role-y: 124px;
+.role-loop:hover .sde,
+.role-loop:focus-within .sde {
+  --role-y: 134px;
   animation-delay: 360ms;
 }
 
@@ -532,15 +532,15 @@ body {
 
 .frontend,
 .backend,
-.data-science {
-  font-size: 34px;
+.sde {
+  font-size: 39px;
   line-height: 1;
 }
 
 .frontend {
   color: #ff1fa9;
   font-family: "Apricots", cursive;
-  font-size: 34px;
+  font-size: 39px;
   font-weight: 900;
   filter: saturate(1.45) brightness(1.16);
 }
@@ -549,15 +549,15 @@ body {
   color: #ff751f;
   font-family: "ITCBauhaus", sans-serif;
   font-weight: 900;
-  font-size: 34px;
+  font-size: 39px;
   animation-delay: 1.8s;
   filter: saturate(1.35) brightness(1.14);
 }
 
-.data-science {
+.sde {
   color: #d9f4cd;
   font-family: "Retropix", monospace;
-  font-size: 34px;
+  font-size: 39px;
   font-weight: 900;
   animation-delay: 3.6s;
   filter: saturate(1.3) brightness(1.12);
@@ -857,8 +857,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: min(100%, 1160px);
+  width: calc(100vw - 140px);
   margin-top: clamp(104px, 15vh, 170px);
+  padding-inline: 0;
 }
 
 .about-heading {
@@ -960,6 +961,8 @@ body {
 
 .about-copy p {
   margin: 0;
+  text-align: justify;
+  text-align-last: justify;
 }
 
 .about-copy p + p {
@@ -1061,7 +1064,8 @@ body {
 }
 
 .work-card-copy h3,
-.work-card-copy p {
+.work-card-copy p,
+.work-role-list {
   margin: 0;
 }
 
@@ -1087,6 +1091,29 @@ body {
   font-size: clamp(0.88rem, 1.32vw, 1.08rem);
 }
 
+.work-role-list {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  padding-left: 18px;
+  color: rgba(217, 244, 205, 0.86);
+  font-size: clamp(0.78rem, 1vw, 0.94rem);
+  line-height: 1.24;
+}
+
+.work-role-list li::marker {
+  color: #FFD02B;
+}
+
+.work-role-list li span {
+  display: block;
+}
+
+.work-role-list li span:first-child {
+  color: #f6fff8;
+  font-weight: 600;
+}
+
 .work-card-arrow {
   align-self: start;
   color: rgba(217, 244, 205, 0.76);
@@ -1107,10 +1134,11 @@ body {
 
 .projects-bento {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: 245px 150px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(6, 82px);
   gap: 14px;
-  width: min(100%, 900px);
+  width: 100%;
+  padding-inline: 0;
 }
 
 .project-card {
@@ -1198,23 +1226,33 @@ body {
 }
 
 .project-card-large {
-  grid-column: 1 / 8;
-  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  grid-row: 1 / 7;
 }
 
 .project-card-wide {
-  grid-column: 8 / 13;
-  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  grid-row: 1 / 5;
 }
 
 .project-card:nth-child(3) {
-  grid-column: 1 / 5;
-  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  grid-row: 5 / 7;
 }
 
 .project-card:nth-child(4) {
-  grid-column: 5 / 13;
-  grid-row: 2 / 3;
+  grid-column: 3 / 4;
+  grid-row: 1 / 3;
+}
+
+.project-card:nth-child(5) {
+  grid-column: 3 / 4;
+  grid-row: 3 / 5;
+}
+
+.project-card:nth-child(6) {
+  grid-column: 3 / 4;
+  grid-row: 5 / 7;
 }
 
 .project-card:hover,
@@ -1231,7 +1269,7 @@ body {
 .project-card-front,
 .project-card-back {
   position: absolute;
-  inset: clamp(16px, 2vw, 24px);
+  inset: 18px;
   z-index: 2;
   display: flex;
   flex-direction: column;
@@ -1273,6 +1311,15 @@ body {
   font-weight: 600;
 }
 
+.project-card-large .project-card-back,
+.project-card-wide .project-card-back {
+  inset: 12px 18px;
+  justify-content: space-between;
+  gap: 4px;
+  font-size: clamp(0.7rem, 0.82vw, 0.9rem);
+  line-height: 1.12;
+}
+
 .project-card h3 {
   margin: 0;
   color: #f6fff8;
@@ -1286,6 +1333,18 @@ body {
     1px 0 rgba(255, 208, 43, 0.64),
     0 -1px rgba(255, 208, 43, 0.64),
     0 0 16px rgba(255, 208, 43, 0.22);
+}
+
+.project-card-meta {
+  display: block;
+  margin-bottom: 9px;
+  color: rgba(255, 208, 43, 0.84);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: clamp(0.62rem, 0.75vw, 0.76rem);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
 }
 
 .project-card-front p {
@@ -1567,6 +1626,7 @@ body {
 
   .profile-card {
     left: clamp(220px, 23vw, 430px);
+    top: 43%;
   }
 
   .intro-content {
@@ -1574,14 +1634,20 @@ body {
   }
 
   .about-section,
-  .work-section,
-  .projects-section,
   .connect-section {
     width: min(100%, 1240px);
   }
 
+  .work-section {
+    width: min(100%, 900px);
+  }
+
+  .projects-section {
+    width: calc(100vw - 140px);
+  }
+
   .projects-bento {
-    width: min(100%, 980px);
+    width: 100%;
   }
 }
 
@@ -1593,8 +1659,8 @@ body {
 
   .profile-card {
     left: clamp(48px, 9vw, 96px);
-    top: 38%;
-    width: clamp(180px, 28vw, 280px);
+    top: 42%;
+    width: clamp(200px, 30vw, 305px);
   }
 
   .introduction {
@@ -1603,25 +1669,25 @@ body {
   }
 
   .intro-content {
-    width: min(100%, 420px);
+    width: min(100%, 455px);
   }
 
   .name {
-    width: 300px;
-    height: 148px;
+    width: 330px;
+    height: 158px;
   }
 
   .name-script {
-    font-size: 196px;
+    font-size: 201px;
   }
 
   .name-pixel {
-    left: 146px;
-    font-size: 50px;
+    left: 150px;
+    font-size: 55px;
   }
 
   .role {
-    font-size: clamp(1.35rem, 3vw, 1.8rem);
+    font-size: clamp(1.66rem, 3vw, 2.11rem);
   }
 
   .focusedon {
@@ -1636,8 +1702,8 @@ body {
   .focused-label,
   .frontend,
   .backend,
-  .data-science {
-    font-size: clamp(1.28rem, 2.9vw, 1.7rem);
+  .sde {
+    font-size: clamp(1.59rem, 2.9vw, 2.01rem);
   }
 
   .page2-nav {
@@ -1672,8 +1738,9 @@ body {
   }
 
   .projects-bento {
-    grid-template-rows: 230px 170px;
-    width: min(100%, 820px);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(6, 72px);
+    width: 100%;
   }
 
   .connect-content {
@@ -1718,44 +1785,44 @@ body {
     order: 1;
     left: auto;
     top: auto;
-    width: clamp(142px, 42vw, 198px);
+    width: clamp(156px, 45vw, 216px);
     margin-top: clamp(24px, 7vh, 48px);
     border-radius: 18px;
     transform: none;
   }
 
-  .profile-card:hover {
-    transform: scale(1.065);
+.profile-card:hover {
+    transform: scale(1.08);
   }
 
   .intro-content {
-    width: min(100%, 320px);
+    width: min(100%, 350px);
     margin-top: 0;
     transform: translateY(0);
   }
 
   .name {
-    width: min(100%, 260px);
-    height: 120px;
+    width: min(100%, 290px);
+    height: 130px;
   }
 
   .name-script {
     top: -21px;
     left: -12px;
-    font-size: 158px;
+    font-size: 163px;
   }
 
   .name-pixel {
     top: 32px;
-    left: 118px;
-    font-size: 40px;
+    left: 122px;
+    font-size: 45px;
   }
 
   .role {
     gap: 5px;
     max-width: 100%;
     flex-wrap: wrap;
-    font-size: clamp(0.96rem, 5vw, 1.16rem);
+    font-size: clamp(1.27rem, 5vw, 1.47rem);
   }
 
   .focusedon {
@@ -1782,16 +1849,16 @@ body {
     --role-y: 44px;
   }
 
-  .role-loop:hover .data-science,
-  .role-loop:focus-within .data-science {
+  .role-loop:hover .sde,
+  .role-loop:focus-within .sde {
     --role-y: 88px;
   }
 
   .focused-label,
   .frontend,
   .backend,
-  .data-science {
-    font-size: clamp(1.08rem, 5.6vw, 1.36rem);
+  .sde {
+    font-size: clamp(1.39rem, 5.6vw, 1.67rem);
   }
 
   .gif {
@@ -1862,8 +1929,11 @@ body {
   }
 
   .projects-section {
+    width: 100%;
     min-height: auto;
     margin-top: 66px;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .connect-section {
@@ -2015,7 +2085,9 @@ body {
   }
 
   .project-card:nth-child(3),
-  .project-card:nth-child(4) {
+  .project-card:nth-child(4),
+  .project-card:nth-child(5),
+  .project-card:nth-child(6) {
     grid-column: auto;
     grid-row: auto;
   }
